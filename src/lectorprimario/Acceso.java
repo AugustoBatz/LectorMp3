@@ -36,77 +36,73 @@ public class Acceso {
                         contador++;
                         if(x==3)
                         {
-                            System.out.println("Version 3");
-                            //////////////////////////////// buscar TPE1
-                            int terminar=-5;
-                            while(terminar!=0){
-                            while((char)archivo.readByte()!='T')
+                            byte a=0,b=0,c=0,d=0;
+                            while(a!=84&&b!=80&&c!=69&&d!=50)
                             {
+                                a=archivo.readByte();
                                 contador++;
-                            }
-                            archivo.seek(contador);
-                            String aux=String.valueOf((char)archivo.read());
-                            System.out.println("Primera Letra "+aux);
-                            System.out.println("La primera T esta "+ contador);
-                            for (int i = 0; i < 3; i++) {
-                                aux=aux+String.valueOf((char)archivo.readByte());
+                               
+                                b=archivo.readByte();
                                 contador++;
-                            }
-                                System.out.println(aux);
-                            if("TPE2".equals(aux))
-                            {
-                                System.out.println("Aca empieza el artista");
-                                System.out.println("TPE2 termina "+contador+" Bytes");
-                                int IA=contador;
-                                int fin=-5;
-                                while(fin!=0)
+                                
+                                c=archivo.readByte();
+                                contador++;
+                                
+                                d=archivo.readByte();
+                                contador++;
+                                
+                                if(a!=84&&b!=80&&c!=69&&d!=50)
                                 {
-                                    contador++;
-                                    if((char)archivo.readByte()=='T')
+                                    contador=contador-3;
+                                    archivo.seek(contador);
+                                }
+                            }
+                           int IA=contador;
+                          
+                           if((char)a=='T'&&(char)b=='I'&&(char)c=='T'&&(char)d=='2')//////raro
+                           {
+                               System.out.println("Raro");
+                               a=0;
+                               b=0;
+                               c=0;
+                               d=0;
+                               while(a!=84&&b!=80&&c!=69&&d!=49)
+                            {
+                                
+                                a=archivo.readByte();
+                                contador++;
+                                b=archivo.readByte();
+                                contador++;
+                                c=archivo.readByte();
+                                contador++;
+                                d=archivo.readByte();
+                                contador++;
+                                if(a!=84&&b!=80&&c!=69&&d!=50)
+                                {
+                                    contador=contador-3;
+                                    archivo.seek(contador);
+                                }
+                                
+                            }   
+                                byte xx;
+                                String titulo="";
+                                archivo.seek(IA+1);
+                                for (int i = IA; i < contador-5; i++) 
+                                {
+                                    xx=archivo.readByte();
+                                    if(xx>65&&xx<123||xx==32)
                                     {
-                                        contador++;
-                                        if((char)archivo.readByte()=='I')
-                                        {
-                                            contador++;
-                                            if((char)archivo.readByte()=='T')
-                                            {
-                                                contador++;
-                                                if((char)archivo.readByte()=='2')
-                                                {
-                                                   
-                                                    System.out.println("TPE2 Termina en "+contador+"  Bytes");
-                                                    archivo.seek(IA+1);
-                                                    String artista="";
-                                                    byte aux2;
-                                                    for (int i = IA; i < contador-4; i++) {
-                                                        aux2=archivo.readByte();
-                                                        if(aux2>31&&aux2<123)
-                                                        {
-                                                            artista=artista+String.valueOf((char)aux2);
-                                                        }
-                                                        
-                                                    }       
-                                                    System.out.println("El artista es ");
-                                                    System.out.println(artista);
-                                                    fin=0;    
-                                                        
-                                                    
-                                                }
-                                            }
-                                        }
+                                        titulo=titulo+String.valueOf((char)xx);
                                     }
                                 
-                                    
-                                    
                                 }
-                                terminar=0;
-                            }
-                            else
-                            {
+                                System.out.println(titulo);
                                 
-                            }
-                            
-                            }
+                           }
+                           else////////normal
+                           {
+                               
+                           }
                             
                         }
                         if(x==4)
