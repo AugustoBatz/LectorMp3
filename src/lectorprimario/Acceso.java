@@ -36,8 +36,8 @@ public class Acceso {
                         contador++;
                         if(x==3)
                         {
-                            byte a=0,b=0,c=0,d=0;
-                            while(a!=84&&b!=80&&c!=69&&d!=50)
+                            int a=0,b=0,c=0,d=0;
+                            while((a!=84&&b!=73)&&(c!=84&&d!=50))
                             {
                                 a=archivo.readByte();
                                 contador++;
@@ -50,59 +50,69 @@ public class Acceso {
                                 
                                 d=archivo.readByte();
                                 contador++;
-                                
-                                if(a!=84&&b!=80&&c!=69&&d!=50)
+                                System.out.println("a= "+Integer.toHexString(a)+" b= "+Integer.toHexString(b)+" c= "+Integer.toHexString(c)+" d= "+Integer.toHexString(d));
+                                if(a!=84&&b!=73&&c!=84&&d!=50)
                                 {
                                     contador=contador-3;
                                     archivo.seek(contador);
                                 }
                             }
-                           int IA=contador;
-                          
-                           if((char)a=='T'&&(char)b=='I'&&(char)c=='T'&&(char)d=='2')//////raro
-                           {
-                               System.out.println("Raro");
-                               a=0;
-                               b=0;
-                               c=0;
-                               d=0;
-                               while(a!=84&&b!=80&&c!=69&&d!=49)
+                           int TIT2=contador;///termina etiqueta TIT2
+                           System.out.println("TIT2 "+TIT2 +(char)archivo.readByte());
+                          contador=3;
+                           archivo.seek(3);
+                           a=0;b=0;c=0;d=0;
+                            while(a!=84&&b!=80&&c!=69&&d!=49)
                             {
-                                
                                 a=archivo.readByte();
                                 contador++;
+                               
                                 b=archivo.readByte();
                                 contador++;
+                                
                                 c=archivo.readByte();
                                 contador++;
+                                
                                 d=archivo.readByte();
                                 contador++;
-                                if(a!=84&&b!=80&&c!=69&&d!=50)
+                                System.out.println("a= "+a+" b= "+b+" c= "+c+" d= "+d);
+                                if(a!=84&&b!=80&&c!=69&&d!=49)
                                 {
                                     contador=contador-3;
                                     archivo.seek(contador);
                                 }
-                                
-                            }   
-                                byte xx;
-                                String titulo="";
-                                archivo.seek(IA+1);
-                                for (int i = IA; i < contador-5; i++) 
-                                {
-                                    xx=archivo.readByte();
-                                    if(xx>65&&xx<123||xx==32)
-                                    {
-                                        titulo=titulo+String.valueOf((char)xx);
-                                    }
-                                
-                                }
-                                System.out.println(titulo);
-                                
-                           }
-                           else////////normal
-                           {
+                            }
+                           int TPE2=contador;///termina etiqueta TPE2
+                            System.out.println("TPE2 "+TPE2+" " +archivo.readByte());
+                            
+                           
+                          
+                          contador=3;
+                           archivo.seek(3);
+                           a=0;b=0;c=0;d=0;
+                            while(a!=84&&b!=65&&c!=76&&d!=66)
+                            {
+                                a=archivo.readByte();
+                                contador++;
                                
-                           }
+                                b=archivo.readByte();
+                                contador++;
+                                
+                                c=archivo.readByte();
+                                contador++;
+                                
+                                d=archivo.readByte();
+                                contador++;
+                                System.out.println("a= "+a+" b= "+b+" c= "+c+" d= "+d);
+                                if(a!=84&&b!=65&&c!=76&&d!=66)
+                                {
+                                    contador=contador-3;
+                                    archivo.seek(contador);
+                                }
+                            }
+                           int TALB=contador;///termina etiqueta TALB
+                            System.out.println("TALB "+TALB+" " +archivo.readByte());
+                          
                             
                         }
                         if(x==4)
