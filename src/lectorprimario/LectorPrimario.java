@@ -76,20 +76,19 @@ public class LectorPrimario {
     static public void paths(File ruta)
     {
        
-        File listFile[] = ruta.listFiles();                                     //se declara un array de tipo File
-        
+        File listFile[] = ruta.listFiles();                                     
         if (listFile != null)       
         {
             for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory())                                  //verifica si es un directorio si es entra a la recursiva
+                if (listFile[i].isDirectory())                             
                 {
                     paths(listFile[i]);
                 }
-                else                                                            //si no solo agrega a un arraylist las canciones.
+                else                                                           
                 {
-                    int TamString = listFile[i].getAbsolutePath().length();     //esto sirve para ver si es un archivo con extension mp3 ya que en tu 																	podes carpeta tener .txt u otras extenciones
+                    int TamString = listFile[i].getAbsolutePath().length();     																	
                     String obtener=listFile[i].getAbsolutePath().substring(TamString-3, TamString);
-                    if(obtener.equals("mp3"))                                   //cuando ya verifico que es mp3 lo agrega tanto rutas como nombres
+                    if(obtener.equals("mp3"))                                 
                     {
                         Rutas.add(listFile[i].getAbsolutePath());
                         nombres.add(listFile[i].getName());
