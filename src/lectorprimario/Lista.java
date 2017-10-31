@@ -22,19 +22,44 @@ public class Lista {
         inicio = null;
         tamanio = 0;
     }
+    public nodo getsiguinte()
+    {
+        return aux.getSiguiente();
+    }
+    public void setsiguiente(nodo sig)
+    {
+        aux=sig;
+    }
+    public nodo getinicio(){
+        return inicio;
+    }
+    public String getartista()
+    {
+        return aux.getartista();
+    }
+    public String getalbum()
+    {
+        return aux.getalbum();
+    }
+    public String getnombre()
+    {
+        return aux.getcancion();
+    }
      public boolean esVacia(){
         return inicio == null;
     }
     public int getTamanio(){
         return tamanio;
     }
-    public void mostrar()
+    
+    public int mostrar()
 	{
 	
 		aux=inicio;
 		if(inicio==null)
 		{
 			System.out.println("Lista vacia");
+                        return 0;
 		}
 		else
 		{
@@ -57,6 +82,7 @@ public class Lista {
                                 
 				aux=aux.getsiguiente();
 			}
+                        return-4;
 		}
         }
    

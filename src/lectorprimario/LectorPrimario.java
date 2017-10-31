@@ -35,6 +35,7 @@ public class LectorPrimario {
         
         Acceso n=new Acceso();
         Lista Lista=new Lista();
+        Escribir_Archivo x=new Escribir_Archivo();
 //        String ruta;
 //        File f;
 //        javax.swing.JFileChooser j = new javax.swing.JFileChooser();
@@ -51,7 +52,10 @@ public class LectorPrimario {
         for (int i = 0; i < Rutas.size(); i++) {
             n.lectura(Rutas.get(i), Lista);
         }
-        Lista.mostrar();
+        
+        
+        
+        x.escribit(Lista);
        
 //        
     }
